@@ -12,6 +12,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
+import joblib
 
 # Generate some sample data
 np.random.seed(0)
@@ -22,7 +23,9 @@ y = 4 + 3 * X + np.random.randn(100, 1)
 data = pd.DataFrame(data=np.hstack((X, y)), columns=['X', 'y'])
 
 # Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(data[['X']], data['y'], test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(
+    data[['X']], data['y'], test_size=0.2, random_state=42
+)
 
 # Initialize and train the model
 model = LinearRegression()
@@ -38,5 +41,4 @@ mse = mean_squared_error(y_test, y_pred)
 print(f"Mean Squared Error: {mse}")
 
 # Save the model
-import joblib
 joblib.dump(model, 'linear_regression_model.pkl')
