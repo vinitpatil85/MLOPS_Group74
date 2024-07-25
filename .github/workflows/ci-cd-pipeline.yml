@@ -70,4 +70,3 @@ jobs:
       - name: Deploy
         run: |
           echo "Deploying the model..."
-          "Add CI/CD pipeline workflow"
